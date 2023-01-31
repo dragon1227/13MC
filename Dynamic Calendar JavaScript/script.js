@@ -16,7 +16,12 @@ const months13 = ["None","January", "February", "March", "April", "May", "June",
             "August", "September", "October", "November", "December"];
 
               
-
+const set13MC = function () {
+    var cur13 = getFull13MCDate(currYear, currMonth, currDate);
+    current13Date.innerText = `${months13[cur13.month]} ${cur13.year}`;
+    $("#td_"+cur13.date).addClass("active");
+    console.log(cur13);
+}
 function setClickHandler(){
     $(".days.origin").children("li").on("click",function(){
         if ($(this).hasClass("inactive")) return;
@@ -24,10 +29,7 @@ function setClickHandler(){
         $("li").removeClass("active");
         $(this).addClass("active");
         if (typeof(getFull13MCDate) != undefined){
-            var cur13 = getFull13MCDate(currYear, currMonth, currDate);
-            current13Date.innerText = `${months13[cur13.month]} ${cur13.year}`;
-            $("#td_"+cur13.date).addClass("active");
-            console.log(cur13);
+            set13MC();
         }
     });
 }
@@ -61,7 +63,7 @@ const renderCalendar = () => {
         if (isLeapYear(new Date(currYear, currMonth, currDate))) $("#td_-1").text("L");
         else $("#td_-1").text("-");
         current13Date.innerText = `${months13[cur13.month]} ${cur13.year}`;
-
+        set13MC();
     }
 
     currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
