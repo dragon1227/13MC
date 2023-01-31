@@ -1,15 +1,37 @@
 const daysTag = document.querySelector(".days"),
 currentDate = document.querySelector(".current-date"),
+current13Date = document.querySelector(".current-13-date"),
 prevNextIcon = document.querySelectorAll(".icons span");
 
 // getting new date, current year and month
 let date = new Date(),
 currYear = date.getFullYear(),
-currMonth = date.getMonth();
+currMonth = date.getMonth(),
+currDate = date.getDate();
 
 // storing full name of all months in array
 const months = ["January", "February", "March", "April", "May", "June", "July",
               "August", "September", "October", "November", "December"];
+const months13 = ["None","January", "February", "March", "April", "May", "June","Sol", "July",
+            "August", "September", "October", "November", "December"];
+
+              
+
+function setClickHandler(){
+    $(".days").children("li").on("click",function(){
+        if ($(this).hasClass("inactive")) return;
+        currDate = Number($(this).html());
+        $("li").removeClass("active");
+        $("td").removeClass("active");
+        $(this).addClass("active");
+        if (typeof(getFull13MCDate) != undefined){
+            var cur13 = getFull13MCDate(currYear, currMonth, currDate);
+            current13Date.innerText = `${months13[cur13.month]} ${cur13.year}`;
+            $("#td_"+cur13.date).addClass("active");
+            console.log(cur13);
+        }
+    });
+}
 
 const renderCalendar = () => {
     let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
@@ -32,8 +54,20 @@ const renderCalendar = () => {
     for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
         liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
     }
+
+
+    if (typeof(getFull13MCDate) != undefined){
+        var cur13 = getFull13MCDate(currYear, currMonth, currDate);
+        if (isLeapYear(new Date(currYear, currMonth, currDate))) $("#td_-1").text("L");
+        else $("#td_-1").text("-");
+        current13Date.innerText = `${months13[cur13.month]} ${cur13.year}`;
+    }
+
     currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
     daysTag.innerHTML = liTag;
+
+    setClickHandler();
+
 }
 renderCalendar();
 
@@ -50,6 +84,7 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
         } else {
             date = new Date(); // pass the current date as date value
         }
+        currDate = 1;
         renderCalendar(); // calling renderCalendar function
     });
 });

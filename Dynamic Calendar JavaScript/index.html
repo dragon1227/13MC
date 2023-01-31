@@ -8,7 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google Font Link for Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="utils.js" defer></script>
     <script src="script.js" defer></script>
+    <style>
+      td{
+        padding:10px;
+      }
+      td.active{
+        background-color: brown;
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
@@ -33,5 +43,50 @@
       </div>
     </div>
     
+    <div class="wrapper">
+      <header>
+        <p class="current-13-date"></p>
+
+      </header>
+      <table>
+        <head>
+          <td>Sun</td>
+          <td>Mon</td>
+          <td>Tue</td>
+          <td>Wed</td>
+          <td>Thu</td>
+          <td>Fri</td>
+          <td>Sat</td>
+          <td>X</td>
+        </head>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+
+      $(document).ready(
+        function () {
+          var appendTXT = "";
+          for (var i = 0; i < 4; i++){
+            appendTXT += "<tr>";
+            for (var j = 0; j < 7; j++){
+              let label = (i*7+j+1);
+              appendTXT += "<td id='td_"+label+"'>"+(label)+"</td>";
+            }
+            appendTXT += (i+"&"+j);
+            if (i==1 && j==7) appendTXT += "<td id='td_-1'>L</td>";
+            else if (i==3 && j==7) appendTXT += "<td id='td_-2'>Y</td>";
+            else appendTXT += "<td>"+"-"+"</td>";
+            appendTXT += "</tr>";
+          }
+          $("tbody").first().append($(appendTXT));
+          renderCalendar();
+        }
+      );
+    </script>
+
   </body>
 </html>
