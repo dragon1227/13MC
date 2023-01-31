@@ -39,30 +39,33 @@
           <li>Fri</li>
           <li>Sat</li>
         </ul>
-        <ul class="days"></ul>
+        <ul class="days origin"></ul>
       </div>
     </div>
-    
+
     <div class="wrapper">
       <header>
-        <p class="current-13-date"></p>
-
+        <p class="current-date current-13-date"></p>
+        <div class="icons">
+          <span id="prev" class="material-symbols-rounded">chevron_left</span>
+          <span id="next" class="material-symbols-rounded">chevron_right</span>
+        </div>
       </header>
-      <table>
-        <head>
-          <td>Sun</td>
-          <td>Mon</td>
-          <td>Tue</td>
-          <td>Wed</td>
-          <td>Thu</td>
-          <td>Fri</td>
-          <td>Sat</td>
-          <td>X</td>
-        </head>
-        <tbody>
+      <div class="calendar MC13">
+        <ul class="weeks">
+          <li>Sun</li>
+          <li>Mon</li>
+          <li>Tue</li>
+          <li>Wed</li>
+          <li>Thu</li>
+          <li>Fri</li>
+          <li>Sat</li>
+          <li>X</li>
+        </ul>
+        <ul id="MC13_days" class="days">
 
-        </tbody>
-      </table>
+        </ul>
+      </div>
     </div>
 
     <script>
@@ -71,18 +74,18 @@
         function () {
           var appendTXT = "";
           for (var i = 0; i < 4; i++){
-            appendTXT += "<tr>";
+            // appendTXT += "<tr>";
             for (var j = 0; j < 7; j++){
               let label = (i*7+j+1);
-              appendTXT += "<td id='td_"+label+"'>"+(label)+"</td>";
+              appendTXT += "<li id='td_"+label+"'>"+(label)+"</li>";
             }
-            appendTXT += (i+"&"+j);
-            if (i==1 && j==7) appendTXT += "<td id='td_-1'>L</td>";
-            else if (i==3 && j==7) appendTXT += "<td id='td_-2'>Y</td>";
-            else appendTXT += "<td>"+"-"+"</td>";
-            appendTXT += "</tr>";
+            // appendTXT += (i+"&"+j);
+            if (i==1 && j==7) appendTXT += "<li id='td_-1'>L</li>";
+            else if (i==3 && j==7) appendTXT += "<li id='td_-2'>Y</li>";
+            else appendTXT += "<li>"+"-"+"</li>";
+            // appendTXT += "</tr>";
           }
-          $("tbody").first().append($(appendTXT));
+          $("#MC13_days").first().append($(appendTXT));
           renderCalendar();
         }
       );
