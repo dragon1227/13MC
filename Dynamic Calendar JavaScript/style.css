@@ -16,7 +16,8 @@ body{
 }
 .wrapper{
   width: 450px;
-  background: #fff;
+  color: white;
+  background: #303030;
   border-radius: 10px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.12);
   margin: 30px;
@@ -65,14 +66,12 @@ header .current-date{
   margin-bottom: 20px;
 }
 .calendar li{
-  color: #333;
+  color: rgb(129, 129, 129);
   width: calc(100% / 7);
   font-size: 1.07rem;
 }
 .calendar.MC13 li{
-  color: #333;
   width: calc(100% / 8);
-  font-size: 1.07rem;
 }
 .calendar .weeks li{
   font-weight: 500;
@@ -85,7 +84,7 @@ header .current-date{
   margin-top: 30px;
 }
 .days li.inactive{
-  color: #aaa;
+  color: #484848;
 }
 .days li.active{
   color: #fff;
@@ -100,12 +99,14 @@ header .current-date{
   z-index: -1;
   border-radius: 50%;
   transform: translate(-50%, -50%);
+  transition: all .1s linear;
 }
 .days li.active::before{
-  background: #272727;
+  background: #4c4c4c;
+  border-radius: 50%;
 }
 .days li:not(.active):hover::before{
-  background: #f2f2f2;
+  background: #8192dd;
 }
 
 .container {
