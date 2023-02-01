@@ -109,6 +109,10 @@ header .current-date{
   background: #8192dd;
 }
 
+.MC13 .days li:not(.active):hover::before{
+  background: transparent;
+}
+
 .container {
   display: flex;
 }
