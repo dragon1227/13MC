@@ -20,7 +20,7 @@ body{
   background: #303030;
   border-radius: 10px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-  margin: 30px auto;
+  margin: 30px;
 }
 .wrapper header{
   display: flex;
@@ -117,9 +117,6 @@ header .current-date{
   .container {
     display: block;
   }
-  .wrapper {
-    margin: 30px;
-  }
 }
 
 @media screen and (max-width: 600px) {
@@ -135,5 +132,8 @@ header .current-date{
   header .current-date {
     font-size: 1rem;
     font-weight: 500;
+  }
+  .wrapper {
+    margin: 30px auto;
   }
 }
