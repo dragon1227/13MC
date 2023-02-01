@@ -121,7 +121,7 @@ header .current-date{
 
 @media screen and (max-width: 600px) {
   .wrapper {
-    width: 70vw;
+    width: 80%;
   }
   .calendar .days li {
     margin-top: 1rem;
