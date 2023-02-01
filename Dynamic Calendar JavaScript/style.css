@@ -20,7 +20,7 @@ body{
   background: #303030;
   border-radius: 10px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-  margin: 30px;
+  margin: 30px auto;
 }
 .wrapper header{
   display: flex;
@@ -125,5 +125,12 @@ header .current-date{
   }
   .calendar .days li {
     margin-top: 1rem;
+  }
+  .calendar li{
+    font-size: .8rem;
+  }
+  header .current-date {
+    font-size: 1rem;
+    font-weight: 500;
   }
 }
